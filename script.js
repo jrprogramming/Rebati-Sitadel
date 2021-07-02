@@ -47,13 +47,14 @@ const resetPuzzle = () => {
 
     image = new Image();
     image.src = getRandomImageSource();
-    getImageWidthAndHeight();
-
-    document.getElementById('grid').style.display = 'visible';
     
+    getImageWidthAndHeight();
+    
+    document.getElementById('grid').style.display = 'visible';
+
     document.getElementById('points').textContent = '0';
     document.getElementById('clock').textContent = '0:00';
-    
+
     createBoard();
     createPuzzle();
     clock = setInterval(updateClock, 1000);
@@ -221,5 +222,20 @@ const getImageWidthAndHeight = () => {
     CANVAS_HEIGHT = image.height / (ROWS * scale);
 }
 
-window.onload = () => resetPuzzle();
+window.onload = () => {
+    image = new Image();
+    image.src = getRandomImageSource();
+    
+    setTimoutInterval(() => {
+        getImageWidthAndHeight();
+        document.getElementById('grid').style.display = 'visible';
+
+        document.getElementById('points').textContent = '0';
+        document.getElementById('clock').textContent = '0:00';
+
+        createBoard();
+        createPuzzle();
+        clock = setInterval(updateClock, 1000);
+    }, 1000);
+};
 
