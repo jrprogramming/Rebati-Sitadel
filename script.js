@@ -226,7 +226,7 @@ window.onload = () => {
     image = new Image();
     image.src = getRandomImageSource();
     
-    setTimoutInterval(() => {
+    setTimeout(() => {
         getImageWidthAndHeight();
         document.getElementById('grid').style.display = 'visible';
 
