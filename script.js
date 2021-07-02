@@ -55,6 +55,10 @@ const resetPuzzle = () => {
     
     document.getElementById('points').textContent = '0';
     document.getElementById('clock').textContent = '0:00';
+    
+    createBoard();
+    createPuzzle();
+    clock = setInterval(updateClock, 1000);
 }
 
 const clearBoard = () => {
