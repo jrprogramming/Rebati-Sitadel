@@ -204,7 +204,7 @@ const shuffleCanvases = array => {
 
 const getRandomImageSource = () => {
     const index = Math.floor(Math.random() * IMAGES.length);
-    return `./Images/${IMAGES[index]}`;
+    return `./${IMAGES[index]}`;
 }
 
 const getImageWidthAndHeight = () => {
