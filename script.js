@@ -219,16 +219,5 @@ const getImageWidthAndHeight = () => {
     CANVAS_HEIGHT = image.height / (ROWS * scale);
 }
 
-window.onload = () => {
-    image = new Image();
-    image.src = getRandomImageSource();
-    
-    while (CANVAS_HEIGHT === 0 || CANVAS_WIDTH === 0) {
-        getImageWidthAndHeight();   
-    }
-    
-    createBoard();
-    createPuzzle();
-    clock = setInterval(updateClock, 1000);
-};
+window.onload = () => resetPuzzle();
 
