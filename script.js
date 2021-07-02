@@ -43,13 +43,13 @@ document.getElementById('reset').addEventListener('click', () => {
 
 
 const resetPuzzle = () => {
-
     clearBoard();
 
-    image = new Image();
-    image.src = getRandomImageSource();
-
-    getImageWidthAndHeight();
+    while (CANVAS_WIDTH === 0 || CANVAS_HEIGHT === 0) {
+        image = new Image();
+        image.src = getRandomImageSource();
+        getImageWidthAndHeight();
+    }
 
     document.getElementById('grid').style.display = 'visible';
     
