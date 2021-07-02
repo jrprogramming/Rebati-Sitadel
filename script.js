@@ -10,8 +10,8 @@ const IMAGES = [
     'sans souci.jpg'
 ];
 
-let CANVAS_WIDTH;
-let CANVAS_HEIGHT;
+let CANVAS_WIDTH = 0;
+let CANVAS_HEIGHT = 0;
 
 let mistakes = 0;
 
@@ -222,8 +222,10 @@ const getImageWidthAndHeight = () => {
 window.onload = () => {
     image = new Image();
     image.src = getRandomImageSource();
-
-    getImageWidthAndHeight();
+    
+    while (CANVAS_HEIGHT === 0 || CANVAS_WIDTH === 0) {
+        getImageWidthAndHeight();   
+    }
     
     createBoard();
     createPuzzle();
