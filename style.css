@@ -115,11 +115,16 @@ h1 {
     cursor: pointer;
 }
 
+#image {
+    width: 100%;
+    height: auto;
+}
+
 #stats-row {
     display: flex;
     flex-direction: column;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     body {
         min-height: auto;
         min-width: auto;
@@ -135,6 +140,10 @@ h1 {
     }
     h1, h2 {
         font-size: 24px;
+    }
+    #image {
+        height: 75%;
+        width: auto;
     }
     #title {
         font-size: 48px;
