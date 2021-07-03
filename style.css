@@ -1,156 +1,29 @@
-html {
-    min-height: 1000px;
-    min-width: 1200px;
-    height: 100%;
-    width: 100%;
-    
-}
-body {
-    text-align: center;
-    background-color: #282c34;
-    min-height: 500px;
-    min-width: 500px;
-    display: flex;
-    flex-direction: column;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    margin: 0;
-}
-* {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-canvas {
-    border-radius: 10px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.cell {
-    margin: 0;
-    padding: 0;
-    border: solid #7c8aaf 1px;
-    border-radius: 0;
-    height: 100%;
-}
-
-.canvas:hover, .selected {
-    background-color: #ffff00;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.24);
-}
-.wrong-cell {
-    background-color: #ff0000;
-}
-.completed-cell {
-    border: none;
-}
-/* .cell:hover {
-    background-color: #7c8aaf;
-} */
-.hide {
-    display: none;
-}
-
-.row {
-    margin: 0;
-    padding: 0;
-}
-
-#grid {
-    background-color: #393c44;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-#panel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
-}
-h1 {
-    font-size: 36px;
-}
-#title {
-    font-size: 48px;
-}
-#stats {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #7c8aaf;
-    border-radius: 10px;
-    width: 300px;
-    margin: 0 30px;
-    padding: 10px;
-}
-
-#clock-div, #points-div {
-    border-radius: 10px;
-    margin: 10px 0;
-    width: 280px;
-    background-color: #393c44;
-}
-
-#reset {
-    color: white;
-    font-size: 36px;
-    background-color: #ff0000e0;
-    width: 280px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-#stats-row {
-    display: flex;
-    flex-direction: column;
-}
-@media screen and (max-width: 1000px) {
-    body {
-        min-height: 400px;
-        min-width: 500px;
-    }
-    #panel {
-        display: flex;
-        flex-direction: column;
-    }
-    #stats {
-        flex-direction: column;
-        width: auto;
-        margin: 30px 0;
-    }
-    h1, h2 {
-        font-size: 24px;
-    }
-    #title {
-        font-size: 48px;
-    }
-    #clock, #points {
-        font-size: 24px;
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rebati Sitad&eacute;l</title>
+        <link href="./style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1 id="title">Rebati Sitad&eacute;l</h1>
+        <div id="panel">
+            <div id="stats">
+                <div id="stats-row">
+                    <div id="clock-div">
+                        <h1>Clock</h1>
+                        <h1 id="clock">0:00</h1>
+                    </div>
+                    <div id="points-div">
+                        <h1>Mistakes</h1>
+                        <h1 id="points">0</h1>
+                    </div>
+                </div>
+                <button id="reset">New Game</button>
+            </div>
+            <div id="board"></div>
+        </div>
         
-    }
-    #stats-row {
-        flex-direction: row;
-    }
-    #clock-div, #points-div {
-        flex-grow: 1;
-        margin: 10px;
-    }
-    #resett {
-        width: 100%;
-    }
-}
+        <div id="grid"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
