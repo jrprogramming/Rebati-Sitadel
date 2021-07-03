@@ -30,7 +30,10 @@ document.body.addEventListener('drop', () => {
     }
 });
 
+
+
 const resetPuzzle = () => {
+
     clearBoard();
 
     mistakes = 0;
@@ -40,9 +43,16 @@ const resetPuzzle = () => {
     image.src = getRandomImageSource();
 
     image.onload = () => {
-        getImageWidthAndHeight();
+        getCanvasWidthAndHeight();
 
-        document.getElementById('grid').style.display = 'visible';
+
+        const { height, width } = getImageWidthAndHeight();
+        document.getElementById('image').style.height = `${height}px`;
+        document.getElementById('image').style.width = `${width}px`;
+
+        document.getElementById('image').src = image.src;
+
+        document.getElementById('grid').style.display = 'block';
         
         document.getElementById('points').textContent = '0';
         document.getElementById('clock').textContent = '0:00';
@@ -206,16 +216,25 @@ const getRandomImageSource = () => {
     return IMAGES[index];
 }
 
-const getImageWidthAndHeight = () => {
+const getCanvasWidthAndHeight = () => {
     let scale = 1;
     if (image.width > 1000 || image.height > 500) {
         scale = 1.5;
     } else if (image.width < 500 || image.height < 300) {
         scale = .5;
     }
-    console.log(image.width, image.height, image.width / (COLUMNS * scale), image.height / (ROWS * scale));
     CANVAS_WIDTH = image.width / (COLUMNS * scale);
     CANVAS_HEIGHT = image.height / (ROWS * scale);
+}
+
+const getImageWidthAndHeight = () => {
+    let scale = 1.5;
+    if (image.width > 1000) {
+        scale = 4;
+    } else if (image.width > 300 && image.height > 300) {
+        scale = 2;
+    }
+    return { height: image.height / scale, width: image.width / scale };
 }
 
 window.onload = resetPuzzle;
