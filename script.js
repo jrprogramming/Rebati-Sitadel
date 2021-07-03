@@ -47,6 +47,7 @@ const resetPuzzle = () => {
 
     image = new Image();
     image.src = getRandomImageSource();
+    console.log(image.src);
     
     getImageWidthAndHeight();
     
