@@ -30,32 +30,28 @@ document.body.addEventListener('drop', () => {
     }
 });
 
-
-
 const resetPuzzle = () => {
-
     clearBoard();
 
     mistakes = 0;
     time = 0;
 
     image = new Image();
+    image.src = getRandomImageSource();
 
-    const src = getRandomImageSource();
-    console.log(src);
-    image.src = src
+    image.onload = () => {
+        getImageWidthAndHeight();
 
-    getImageWidthAndHeight();
+        document.getElementById('grid').style.display = 'visible';
+        
+        document.getElementById('points').textContent = '0';
+        document.getElementById('clock').textContent = '0:00';
 
-    document.getElementById('grid').style.display = 'visible';
-    
-    document.getElementById('points').textContent = '0';
-    document.getElementById('clock').textContent = '0:00';
-
-    createBoard();
-    createPuzzle();
-    clearInterval(clock);
-    clock = setInterval(updateClock, 1000);
+        createBoard();
+        createPuzzle();
+        clearInterval(clock);
+        clock = setInterval(updateClock, 1000);
+    }
 }
 
 document.getElementById('reset').addEventListener('click', resetPuzzle);
@@ -222,5 +218,4 @@ const getImageWidthAndHeight = () => {
     CANVAS_HEIGHT = image.height / (ROWS * scale);
 }
 
-window.onload = () => resetPuzzle();
-
+window.onload = resetPuzzle;
