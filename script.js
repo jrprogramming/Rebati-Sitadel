@@ -236,6 +236,6 @@ window.onload = () => {
         createBoard();
         createPuzzle();
         clock = setInterval(updateClock, 1000);
-    }, 0);
+    }, 250);
 };
 
