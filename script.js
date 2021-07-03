@@ -10,8 +10,8 @@ const IMAGES = [
     'sans souci.jpg'
 ];
 
-let CANVAS_WIDTH = 0;
-let CANVAS_HEIGHT = 0;
+let CANVAS_WIDTH;
+let CANVAS_HEIGHT;
 
 let mistakes = 0;
 
@@ -30,28 +30,32 @@ document.body.addEventListener('drop', () => {
     }
 });
 
+
+
 const resetPuzzle = () => {
+
     clearBoard();
 
-    image = new Image();
-    image.src = getRandomImageSource();
-    
     mistakes = 0;
     time = 0;
+
+    image = new Image();
+
+    const src = getRandomImageSource();
+    console.log(src);
+    image.src = src
+
+    getImageWidthAndHeight();
+
+    document.getElementById('grid').style.display = 'visible';
     
-    setTimeout(() => {
-        getImageWidthAndHeight();
-        
-        document.getElementById('grid').style.display = 'visible';
+    document.getElementById('points').textContent = '0';
+    document.getElementById('clock').textContent = '0:00';
 
-        document.getElementById('points').textContent = '0';
-        document.getElementById('clock').textContent = '0:00';
-
-        createBoard();
-        createPuzzle();
-        clearInterval(clock);
-        clock = setInterval(updateClock, 1000);
-    }, 250);
+    createBoard();
+    createPuzzle();
+    clearInterval(clock);
+    clock = setInterval(updateClock, 1000);
 }
 
 document.getElementById('reset').addEventListener('click', resetPuzzle);
@@ -203,7 +207,7 @@ const shuffleCanvases = array => {
 
 const getRandomImageSource = () => {
     const index = Math.floor(Math.random() * IMAGES.length);
-    return `${IMAGES[index]}`;
+    return IMAGES[index];
 }
 
 const getImageWidthAndHeight = () => {
@@ -213,9 +217,10 @@ const getImageWidthAndHeight = () => {
     } else if (image.width < 500 || image.height < 300) {
         scale = .5;
     }
-
+    console.log(image.width, image.height, image.width / (COLUMNS * scale), image.height / (ROWS * scale));
     CANVAS_WIDTH = image.width / (COLUMNS * scale);
     CANVAS_HEIGHT = image.height / (ROWS * scale);
 }
 
-window.onload = resetPuzzle;
+window.onload = () => resetPuzzle();
+
