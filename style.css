@@ -1,14 +1,14 @@
 html {
     min-height: 1000px;
+    min-width: 850px;
     height: 100%;
     width: 100%;
-    
 }
 body {
     text-align: center;
     background-color: #282c34;
     min-height: 500px;
-    min-width: 500px;
+    min-width: 850px;
     display: flex;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
@@ -82,9 +82,20 @@ canvas {
 h1 {
     font-size: 36px;
 }
+#header-div {
+    width: 100%;
+    position: static;
+}
 #title {
     font-size: 48px;
+    
 }
+#signature {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
 #stats {
     display: flex;
     align-items: center;
@@ -95,7 +106,6 @@ h1 {
     margin: 0 30px;
     padding: 10px;
 }
-
 #clock-div, #points-div {
     border-radius: 10px;
     margin: 10px 0;
