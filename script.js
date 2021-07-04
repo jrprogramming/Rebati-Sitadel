@@ -31,7 +31,6 @@ document.body.addEventListener('drop', () => {
 });
 
 
-
 const resetPuzzle = () => {
 
     clearBoard();
@@ -56,6 +55,7 @@ const resetPuzzle = () => {
         
         document.getElementById('points').textContent = '0';
         document.getElementById('clock').textContent = '0:00';
+        document.getElementById('title').textContent = 'Rebati Sitadél';
 
         createBoard();
         createPuzzle();
@@ -133,6 +133,7 @@ const selectGrid = cell => {
     }
     if (puzzleCompleted()) {
         document.getElementById('grid').style.display = 'none';
+        document.getElementById('title').textContent = 'Bravo';
         Object.values(document.getElementsByClassName('cell')).forEach(puzzleCell => puzzleCell.classList.add('completed-cell'));
         clearInterval(clock);
     }
